@@ -1,0 +1,47 @@
+<div class="editar-container">
+
+    <h1>Editar Atividade</h1>
+
+    <form
+        action="/atividades/editar"
+        method="POST"
+        class="editar-form"
+    >
+
+        <input
+            type="hidden"
+            name="id"
+            value="{{atividade.id}}"
+        >
+
+        <input
+            type="text"
+            name="titulo"
+            value="{{atividade.titulo}}"
+            required
+        >
+
+        <textarea
+            name="descricao"
+        >{{atividade.descricao}}</textarea>
+
+        <input
+            type="date"
+            name="data"
+            value="{{atividade.data}}"
+            required
+        >
+
+        <input
+            type="time"
+            name="horario"
+            value="{{atividade.horario}}"
+        >
+
+        <button>
+            Salvar alterações
+        </button>
+
+    </form>
+
+</div>

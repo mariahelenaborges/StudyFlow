@@ -1,0 +1,241 @@
+<div class="container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <h2>📚 StudyFlow</h2>
+
+        <ul>
+            <li>📅 Calendário</li>
+            <li>📝 Minhas Tarefas</li>
+            <li>⚙️ Configurações</li>
+        </ul>
+
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <div class="topo">
+
+            <h1>Calendário Acadêmico</h1>
+
+            <button
+                class="btn-nova"
+                onclick="document.getElementById('modal').style.display='flex'"
+            >
+                + Nova atividade
+            </button>
+
+        </div>
+
+
+        <!-- NAVEGAÇÃO ENTRE MESES -->
+        <div class="navegacao-meses">
+
+            <a href="/atividades/{{anoAnterior}}/{{mesAnterior}}">
+                ←
+            </a>
+
+            <h2>
+                {{mesAtual}} {{anoAtual}}
+            </h2>
+
+            <a href="/atividades/{{proximoAno}}/{{proximoMes}}">
+                →
+            </a>
+
+        </div>
+
+
+        <!-- CALENDÁRIO -->
+        <table class="calendario">
+
+            <thead>
+
+                <tr>
+                    <th>Domingo</th>
+                    <th>Segunda</th>
+                    <th>Terça</th>
+                    <th>Quarta</th>
+                    <th>Quinta</th>
+                    <th>Sexta</th>
+                    <th>Sábado</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {{#each calendario}}
+
+                    <tr>
+
+                        {{#each this}}
+
+                            {{#if this}}
+
+                                <td>
+
+                                    <span class="dia">
+                                        {{numero}}
+                                    </span>
+
+                                    {{#each atividades}}
+
+                                        <div class="evento">
+
+                                            <strong>
+                                                {{titulo}}
+                                            </strong>
+
+                                            <br>
+
+                                            <small>
+                                                🕒 {{horario}}
+                                            </small>
+
+                                            <div class="acoes">
+
+                                                <a
+                                                    href="/atividades/editar/{{id}}"
+                                                    title="Editar"
+                                                >
+                                                    ✏️
+                                                </a>
+
+                                                <form
+                                                    action="/atividades/deletar/{{id}}"
+                                                    method="POST"
+                                                >
+
+                                                    <button
+                                                        type="submit"
+                                                        title="Excluir"
+                                                    >
+                                                        🗑️
+                                                    </button>
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+
+                                    {{/each}}
+
+                                </td>
+
+                            {{else}}
+
+                                <td class="vazio"></td>
+
+                            {{/if}}
+
+                        {{/each}}
+
+                    </tr>
+
+                {{/each}}
+
+            </tbody>
+
+        </table>
+
+
+        <!-- LEGENDA -->
+        <div class="legenda">
+
+            <span class="mat">
+                Matemática
+            </span>
+
+            <span class="geo">
+                Geografia
+            </span>
+
+            <span class="ing">
+                Inglês
+            </span>
+
+            <span class="hist">
+                História
+            </span>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL DE NOVA ATIVIDADE -->
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+        <button
+            class="fechar"
+            onclick="document.getElementById('modal').style.display='none'"
+        >
+            ✖
+        </button>
+
+        <h2>Nova atividade</h2>
+
+        <form
+            action="/atividades/add"
+            method="POST"
+        >
+
+            <input
+                type="text"
+                name="titulo"
+                placeholder="Título"
+                required
+            >
+
+            <textarea
+                name="descricao"
+                placeholder="Descrição da atividade"
+            ></textarea>
+
+            <input
+                type="date"
+                name="data"
+                required
+            >
+
+            <input
+                type="time"
+                name="horario"
+            >
+
+            <button
+                class="salvar"
+                type="submit"
+            >
+                Salvar atividade
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById("modal");
+
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+
+};
+
+</script>
