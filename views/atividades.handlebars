@@ -1,0 +1,70 @@
+<div class="container">
+
+  {{#if atividades.length}}
+    <div class="card-principal">
+      <h2>Minhas Atividades</h2>
+    </div>
+
+    <div class="lista">
+      {{#each atividades}}
+        <div class="item">
+          <div>
+            <strong>{{nome}}</strong>
+            <p>Materia: {{materia}}</p>
+            <p>Tipo: {{tipo}}</p>
+            <p>Entrega: {{entrega}}</p>
+          </div>
+
+          <div class="acoes">
+            <a href="/editar/{{id}}" class="btn amarelo">Editar</a>
+
+            <form action="/excluir" method="POST">
+              <input type="hidden" name="id" value="{{id}}">
+              <button type="submit" class="btn vermelho">Excluir</button>
+            </form>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+  {{else}}
+    <div class="vazio">
+      <div class="icone">📋</div>
+      <h2>Nenhuma tarefa</h2>
+      <p>Adicione sua primeira tarefa</p>
+    </div>
+
+  {{/if}}
+
+    <div class="form-box">
+      <h3>+ Nova Tarefa</h3>
+
+      <form action="/criar" method="POST">
+        <input type="text" name="nome" placeholder="Nome da tarefa">
+
+        <select name="materia">
+          <option value="">Selecione a materia</option>
+          <option value="Geografia">Geografia</option>
+          <option value="Historia">Historia</option>
+          <option value="Matematica">Matematica</option>
+          <option value="Quimica">Quimica</option>
+          <option value="Biologia">Biologia</option>
+          <option value="Fisica">Fisica</option>
+          <option value="Portugues">Portugues</option>
+          <option value="Filosofia">Filosofia</option>
+        </select>
+
+        <select name="tipo">
+          <option value="">Selecione o tipo</option>
+          <option value="Prova">Prova</option>
+          <option value="Projeto/Trabalho">Projeto/Trabalho</option>
+          <option value="Atividade">Atividade</option>
+        </select>
+
+        <input type="date" name="entrega">
+
+        <button type="submit" class="btn azul">Salvar</button>
+      </form>
+    </div>
+
+</div>
