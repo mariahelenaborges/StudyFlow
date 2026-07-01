@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyFlow - Organize seus estudos</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #fcfbfe; color: #333; margin: 0; padding: 0; }
+        .navbar { background-color: #0c6ab9; padding: 15px 50px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .navbar-brand { font-size: 22px; font-weight: bold; color: #ffffff; text-decoration: none; }
+        .hero-section { text-align: center; padding: 60px 20px 40px 20px; }
+        .hero-title { font-size: 32px; font-weight: bold; color: #1e1e24; margin-bottom: 10px; }
+        .hero-subtitle { font-size: 16px; color: #666; margin-top: 0; margin-bottom: 40px; }
+        .section-title { text-align: center; font-size: 22px; color: #2d3436; margin-bottom: 30px; }
+        .cards-table { width: 90%; max-width: 1000px; margin: 0 auto; border-spacing: 20px; border-collapse: separate; }
+        .card-box { background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.06); text-align: center; vertical-align: top; width: 33%; border: 1px solid #f1f0f7; }
+        .card-box strong { display: block; font-size: 16px; color: #0c6ab9; margin-bottom: 10px; }
+        .card-box p { font-size: 14px; color: #555; margin: 0; line-height: 1.5; }
+        .btn-container { text-align: center; margin: 40px 0; }
+        .btn-main { background-color: #0c6ab9; color: white; padding: 14px 35px; font-weight: bold; font-size: 16px; text-decoration: none; border-radius: 8px; display: inline-block; box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2); }
+        .alunos-section { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        .alunos-title { font-size: 20px; border-bottom: 2px solid #0c6ab9; padding-bottom: 8px; margin-bottom: 20px; color: #2d3436; }
+        .perfil-card { background: #fff; border-left: 5px solid #0c6ab9; padding: 15px 20px; margin-bottom: 12px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+        .perfil-table { width: 100%; }
+        .btn-action { padding: 6px 12px; font-size: 13px; font-weight: bold; text-decoration: none; border-radius: 4px; color: white; border: none; cursor: pointer; }
+        .btn-edit { background-color: #0c6ab9; color: white; margin-right: 5px; }
+        .btn-del { background-color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/" class="navbar-brand">StudyFlow</a>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-title">Organize suas tarefas sem complicação</div>
+        <div class="hero-subtitle">Foque no que importa e pare de se perder in demandas enormes</div>
+    </div>
+
+    <div class="section-title">Como funciona?</div>
+
+    <table class="cards-table">
+        <tr>
+            <td class="card-box">
+                <strong>1. Crie tarefas</strong>
+                <p>Adicione o que precisa fazer em segundos.</p>
+            </td>
+            <td class="card-box">
+                <strong>2. Foque no essencial</strong>
+                <p>O site mostra o que você precisa fazer no dia a dia, organiza suas tarefas e auxilia seus estudos a partir do método pomodoro.</p>
+            </td>
+            <td class="card-box">
+                <strong>3. Conclua mais rápido</strong>
+                <p>Menos distração, mais foco e ação.</p>
+            </td>
+        </tr>
+    </table>
+
+    <div class="btn-container">
+        <a href="/estudante/novo" class="btn-main">Criar Conta no StudyFlow</a>
+    </div>
+
+    <div class="alunos-section">
+        <div class="alunos-title">Estudantes já cadastrados ao nosso sistema</div>
+        
+        {{#each estudantes}}
+            <div class="perfil-card">
+                <table class="perfil-table">
+                    <tr>
+                        <td>
+                            <strong style="font-size: 16px;">{{this.nome}}</strong> <br>
+                            <span style="font-size: 13px; color: #666;"> {{this.email}} |  {{this.curso}}</span>
+                        </td>
+                        <td style="text-align: right; width: 150px;">
+                            <a href="/estudante/editar/{{this.id}}" class="btn-action btn-edit">Editar</a>
+                            <form action="/estudante/deletar/{{this.id}}" method="POST" style="display:inline;" onsubmit="return confirm('Excluir esta conta permanentemente?')">
+                                <button type="submit" class="btn-action btn-del">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {{else}}
+            <p style="color: #888; font-style: italic; text-align: center;">Nenhum estudante ativo. Crie uma conta acima para testar o CRUD!</p>
+        {{/each}}
+    </div>
+
+</body>
+</html>
