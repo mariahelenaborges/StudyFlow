@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyFlow - Atualizar Dados</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #fcfbfe; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container-cadastro { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); width: 100%; max-width: 400px; border: 1px solid #f1f0f7; }
+        h2 { margin-top: 0; color: #0c6ab9; font-size: 22px; margin-bottom: 25px; text-align: center; }
+        label { display: block; margin-top: 15px; font-weight: 600; color: #444; font-size: 14px; }
+        input { width: 100%; padding: 12px; margin-top: 6px; box-sizing: border-box; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+        .btn-update { background-color: #0c6ab9; color: white; border: none; padding: 14px; width: 100%; font-weight: bold; border-radius: 6px; margin-top: 25px; cursor: pointer; font-size: 15px; }
+        .voltar-link { display: block; text-align: center; margin-top: 15px; color: #888; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="container-cadastro">
+        <h2>Alterar Dados Cadastrais</h2>
+        <form action="/estudante/atualizar" method="POST">
+            <input type="hidden" name="id" value="{{estudante.id}}">
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="{{estudante.nome}}" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="{{estudante.email}}" required>
+
+            <label for="curso">Curso:</label>
+            <input type="text" id="curso" name="curso" value="{{estudante.curso}}">
+
+            <button type="submit" class="btn-update">Confirmar Alterações</button>
+        </form>
+        <a href="/" class="voltar-link">Cancelar e Voltar</a>
+    </div>
+
+</body>
+</html>

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/mariahelenaborges/StudyFlow#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "express-handlebars": "^8.0.3",
+    "express-handlebars": "^8.0.7",
     "mysql2": "^3.22.5",
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"

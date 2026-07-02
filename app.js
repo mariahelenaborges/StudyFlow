@@ -78,10 +78,17 @@ app.post('/excluir', async (req, res) => {
   res.redirect('/')
 })
 
-sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`)
+// Inicia o servidor apenas quando este arquivo for executado diretamente.
+// Isso evita que múltiplas instâncias do servidor sejam iniciadas
+// se este módulo for importado por outro arquivo (ex.: depois de um merge).
+if (require.main === module) {
+  sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando em http://localhost:${PORT}`)
+    })
+  }).catch((erro) => {
+    console.log('Erro ao conectar com o banco:', erro)
   })
-}).catch((erro) => {
-  console.log('Erro ao conectar com o banco:', erro)
-})
+} else {
+  module.exports = app
+}
