@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="form-box">
+    <h2>Editar Tarefa</h2>
+
+    <form action="/editar" method="POST">
+      <input type="hidden" name="id" value="{{atividade.id}}">
+
+      <input type="text" name="nome" value="{{atividade.nome}}">
+
+      <select name="materia">
+        <option value="{{atividade.materia}}">{{atividade.materia}}</option>
+        <option value="Geografia">Geografia</option>
+        <option value="Historia">Historia</option>
+        <option value="Matematica">Matematica</option>
+        <option value="Quimica">Quimica</option>
+        <option value="Biologia">Biologia</option>
+        <option value="Fisica">Fisica</option>
+        <option value="Portugues">Portugues</option>
+        <option value="Filosofia">Filosofia</option>
+      </select>
+
+      <select name="tipo">
+        <option value="{{atividade.tipo}}">{{atividade.tipo}}</option>
+        <option value="Prova">Prova</option>
+        <option value="Projeto/Trabalho">Projeto/Trabalho</option>
+        <option value="Atividade">Atividade</option>
+      </select>
+
+      <input type="date" name="entrega" value="{{atividade.entrega}}">
+
+      <div class="acoes-editar">
+        <a href="/" class="btn cinza">Cancelar</a>
+        <button type="submit" class="btn azul">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
