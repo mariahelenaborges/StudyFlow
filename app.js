@@ -54,7 +54,7 @@ app.get('/editar/:id', async (req, res) => {
     return res.send('Atividade nao encontrada')
   }
 
-  res.render('editarAtividades', { atividade: atividade.toJSON() })
+  res.render('editarAtividade', { atividade: atividade.toJSON() })
 })
 
 app.post('/editar', async (req, res) => {
