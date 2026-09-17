@@ -39,10 +39,15 @@
     <div class="form-box">
       <h3>+ Nova Tarefa</h3>
 
-      <form action="/criar" method="POST">
-        <input type="text" name="nome" placeholder="Nome da tarefa">
+        <form action="/cadastro-atividades/criar" method="POST">
+          <input
+            type="text"
+            name="nome"
+            placeholder="Digite o nome da tarefa"
+            required
+          >
 
-        <select name="materia">
+        <select name="materia" required>
           <option value="">Selecione a materia</option>
           <option value="Geografia">Geografia</option>
           <option value="Historia">Historia</option>
@@ -54,14 +59,14 @@
           <option value="Filosofia">Filosofia</option>
         </select>
 
-        <select name="tipo">
+        <select name="tipo" required>
           <option value="">Selecione o tipo</option>
           <option value="Prova">Prova</option>
           <option value="Projeto/Trabalho">Projeto/Trabalho</option>
           <option value="Atividade">Atividade</option>
         </select>
 
-        <input type="date" name="entrega">
+        <input type="date" name="entrega" required>
 
         <button type="submit" class="btn azul">Salvar</button>
       </form>
