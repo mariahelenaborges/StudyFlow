@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +7,11 @@
   font-family: Arial, sans-serif;
 }
 
+
 body {
   background-color: #f2f2f2;
 }
+
 
 .topo {
   width: 100%;
@@ -19,6 +23,7 @@ body {
   padding: 0 30px;
 }
 
+
 .logo {
   background-color: #f4c400;
   color: white;
@@ -27,6 +32,7 @@ body {
   padding: 10px 18px;
   border-radius: 8px;
 }
+
 
 .perfil {
   width: 32px;
@@ -40,11 +46,13 @@ body {
   font-weight: bold;
 }
 
+
 .container {
   width: 90%;
   max-width: 900px;
   margin: 30px auto;
 }
+
 
 .vazio {
   background-color: white;
@@ -56,19 +64,24 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+
 .icone {
   font-size: 50px;
   margin-bottom: 10px;
 }
 
-.vazio h2 {
+
+.vazio h1 {
+  font-size: 1.5em;
   color: #234f7d;
   margin-bottom: 10px;
 }
 
+
 .vazio p {
   color: #4a6a89;
 }
+
 
 .card-principal {
   background-color: white;
@@ -80,6 +93,7 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+
 .form-box {
   background-color: white;
   max-width: 500px;
@@ -89,11 +103,19 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+
+.card-principal h1 {
+  font-size: 1.5em;
+}
+
+
+.form-box h1,
 .form-box h2,
 .form-box h3 {
   margin-bottom: 15px;
   color: #333;
 }
+
 
 .form-box form {
   display: flex;
@@ -101,16 +123,29 @@ body {
   gap: 10px;
 }
 
+
+.form-box h1 {
+  font-size: 1.5em;
+}
+
+
+.form-box h2.titulo-form {
+  font-size: 1.17em;
+}
+
+
 .form-box input,
 .form-box select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #767676;
   border-radius: 6px;
 }
+
 
 .lista {
   margin-top: 20px;
 }
+
 
 .item {
   background-color: white;
@@ -123,16 +158,19 @@ body {
   align-items: center;
 }
 
+
 .item p {
   margin-top: 4px;
   color: #555;
 }
+
 
 .acoes {
   display: flex;
   gap: 10px;
   align-items: center;
 }
+
 
 .btn {
   border: none;
@@ -143,29 +181,57 @@ body {
   font-size: 14px;
 }
 
+
 .azul {
   background-color: #0d6db8;
   color: white;
 }
+
 
 .amarelo {
   background-color: #f4c400;
   color: black;
 }
 
+
 .vermelho {
   background-color: #e53935;
   color: white;
 }
+
 
 .cinza {
   background-color: #cfcfcf;
   color: black;
 }
 
+
 .acoes-editar {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 10px;
+}
+
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+
+.skip-link:focus {
+  left: 0;
+}
+
+
+main:focus {
+  outline: none;
 }

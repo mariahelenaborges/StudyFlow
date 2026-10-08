@@ -1,6 +1,10 @@
-<div class="editar-container">
+
+
+<main class="editar-container" id="conteudo-principal" tabindex="-1">
+
 
     <h1>Editar Atividade</h1>
+
 
     <form
         action="/atividades/editar"
@@ -8,40 +12,58 @@
         class="editar-form"
     >
 
+
         <input
             type="hidden"
             name="id"
             value="{{atividade.id}}"
         >
 
+
+        <label for="editar-titulo" class="sr-only">Título</label>
         <input
             type="text"
+            id="editar-titulo"
             name="titulo"
             value="{{atividade.titulo}}"
             required
         >
 
+
+        <label for="editar-descricao" class="sr-only">Descrição da atividade</label>
         <textarea
+            id="editar-descricao"
             name="descricao"
         >{{atividade.descricao}}</textarea>
 
+
+        <label for="editar-data" class="sr-only">Data da atividade</label>
         <input
             type="date"
+            id="editar-data"
             name="data"
+            autocomplete="off"
             value="{{atividade.data}}"
             required
         >
 
+
+        <label for="editar-horario" class="sr-only">Horário da atividade</label>
         <input
             type="time"
+            id="editar-horario"
             name="horario"
+            autocomplete="off"
             value="{{atividade.horario}}"
         >
+
 
         <button>
             Salvar alterações
         </button>
 
+
     </form>
 
-</div>
+
+</main>

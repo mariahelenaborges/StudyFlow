@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/bd'); 
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db/conn");
 
-const CadastroEstudante = sequelize.define('CadastroEstudante', {
+
+const CadastroEstudante = sequelize.define("CadastroEstudante", {
   nome: {
     type: DataTypes.STRING,
     allowNull: false
@@ -15,5 +16,6 @@ const CadastroEstudante = sequelize.define('CadastroEstudante', {
     allowNull: true
   }
 });
+
 
 module.exports = CadastroEstudante;
