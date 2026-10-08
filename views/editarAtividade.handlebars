@@ -1,13 +1,20 @@
-<div class="container">
-  <div class="form-box">
-    <h2>Editar Tarefa</h2>
 
-    <form action="/editar" method="POST">
+
+<main class="container" id="conteudo-principal" tabindex="-1">
+  <div class="form-box">
+    <h1>Editar Tarefa</h1>
+
+
+    <form action="/tarefas/editar" method="POST">
       <input type="hidden" name="id" value="{{atividade.id}}">
 
-      <input type="text" name="nome" value="{{atividade.nome}}">
 
-      <select name="materia">
+      <label for="editar-nome" class="sr-only">Nome da tarefa</label>
+      <input type="text" id="editar-nome" name="nome" value="{{atividade.nome}}">
+
+
+      <label for="editar-materia" class="sr-only">Matéria</label>
+      <select id="editar-materia" name="materia">
         <option value="{{atividade.materia}}">{{atividade.materia}}</option>
         <option value="Geografia">Geografia</option>
         <option value="Historia">Historia</option>
@@ -19,19 +26,24 @@
         <option value="Filosofia">Filosofia</option>
       </select>
 
-      <select name="tipo">
+
+      <label for="editar-tipo" class="sr-only">Tipo de tarefa</label>
+      <select id="editar-tipo" name="tipo">
         <option value="{{atividade.tipo}}">{{atividade.tipo}}</option>
         <option value="Prova">Prova</option>
         <option value="Projeto/Trabalho">Projeto/Trabalho</option>
         <option value="Atividade">Atividade</option>
       </select>
 
-      <input type="date" name="entrega" value="{{atividade.entrega}}">
+
+      <label for="editar-entrega" class="sr-only">Data de entrega</label>
+      <input type="date" id="editar-entrega" name="entrega" value="{{atividade.entrega}}" autocomplete="off">
+
 
       <div class="acoes-editar">
-        <a href="/" class="btn cinza">Cancelar</a>
+        <a href="/tarefas" class="btn cinza">Cancelar</a>
         <button type="submit" class="btn azul">Salvar</button>
       </div>
     </form>
   </div>
-</div>
+</main>

@@ -1,9 +1,13 @@
-<div class="container">
+
+
+<main class="container" id="conteudo-principal" tabindex="-1">
+
 
   {{#if atividades.length}}
     <div class="card-principal">
-      <h2>Minhas Atividades</h2>
+      <h1>Minhas Atividades</h1>
     </div>
+
 
     <div class="lista">
       {{#each atividades}}
@@ -15,10 +19,12 @@
             <p>Entrega: {{entrega}}</p>
           </div>
 
-          <div class="acoes">
-            <a href="/editar/{{id}}" class="btn amarelo">Editar</a>
 
-            <form action="/excluir" method="POST">
+          <div class="acoes">
+            <a href="/tarefas/editar/{{id}}" class="btn amarelo">Editar</a>
+
+
+            <form action="/tarefas/excluir" method="POST">
               <input type="hidden" name="id" value="{{id}}">
               <button type="submit" class="btn vermelho">Excluir</button>
             </form>
@@ -27,22 +33,29 @@
       {{/each}}
     </div>
 
+
   {{else}}
     <div class="vazio">
       <div class="icone">📋</div>
-      <h2>Nenhuma tarefa</h2>
+      <h1>Nenhuma tarefa</h1>
       <p>Adicione sua primeira tarefa</p>
     </div>
 
+
   {{/if}}
 
+
     <div class="form-box">
-      <h3>+ Nova Tarefa</h3>
+      <h2 class="titulo-form">+ Nova Tarefa</h2>
 
-      <form action="/criar" method="POST">
-        <input type="text" name="nome" placeholder="Nome da tarefa">
 
-        <select name="materia">
+      <form action="/tarefas/criar" method="POST">
+        <label for="nome-tarefa" class="sr-only">Nome da tarefa</label>
+        <input type="text" id="nome-tarefa" name="nome" placeholder="Nome da tarefa">
+
+
+        <label for="materia-tarefa" class="sr-only">Matéria</label>
+        <select id="materia-tarefa" name="materia">
           <option value="">Selecione a materia</option>
           <option value="Geografia">Geografia</option>
           <option value="Historia">Historia</option>
@@ -54,17 +67,23 @@
           <option value="Filosofia">Filosofia</option>
         </select>
 
-        <select name="tipo">
+
+        <label for="tipo-tarefa" class="sr-only">Tipo de tarefa</label>
+        <select id="tipo-tarefa" name="tipo">
           <option value="">Selecione o tipo</option>
           <option value="Prova">Prova</option>
           <option value="Projeto/Trabalho">Projeto/Trabalho</option>
           <option value="Atividade">Atividade</option>
         </select>
 
-        <input type="date" name="entrega">
+
+        <label for="entrega-tarefa" class="sr-only">Data de entrega</label>
+        <input type="date" id="entrega-tarefa" name="entrega" autocomplete="off">
+
 
         <button type="submit" class="btn azul">Salvar</button>
       </form>
     </div>
 
-</div>
+
+</main>

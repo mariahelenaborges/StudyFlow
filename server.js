@@ -1,31 +1,36 @@
 const express = require("express");
+const path = require("path");
 const { engine } = require("express-handlebars");
 
-const sequelize = require("./db/conn");
-const atividadeRoutes = require("./routes/atividades");
+const { sequelize } = require("./models");
+
+const estudanteRoutes = require("./routes/estudantes");
+const tarefaRoutes = require("./routes/tarefas");
+const calendarioRoutes = require("./routes/atividades");
+
 
 const app = express();
 
-// Configuração do Handlebars
-app.engine("handlebars", engine());
+app.engine("handlebars", engine({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    }
+}));
 app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Rotas
-app.use("/atividades", atividadeRoutes);
+app.use("/", estudanteRoutes);            
+app.use("/tarefas", tarefaRoutes);        
+app.use("/atividades", calendarioRoutes); 
 
-app.get("/", (req, res) => {
-    res.redirect("/atividades");
-});
-
-// Inicialização
 sequelize.sync().then(() => {
     app.listen(3000, () => {
-        console.log("Servidor rodando na porta 3000");
+        console.log("StudyFlow rodando em http://localhost:3000");
     });
 }).catch((err) => {
     console.log(err);

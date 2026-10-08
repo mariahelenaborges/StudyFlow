@@ -1,9 +1,12 @@
 <div class="container">
 
+
     <!-- MENU LATERAL -->
     <aside class="sidebar">
 
+
         <h2>📚 StudyFlow</h2>
+
 
         <ul>
             <li>📅 Calendário</li>
@@ -11,15 +14,21 @@
             <li>⚙️ Configurações</li>
         </ul>
 
+
     </aside>
 
 
+
+
     <!-- CONTEÚDO -->
-    <main class="content">
+    <main class="content" id="conteudo-principal" tabindex="-1">
+
 
         <div class="topo">
 
+
             <h1>Calendário Acadêmico</h1>
+
 
             <button
                 class="btn-nova"
@@ -28,31 +37,44 @@
                 + Nova atividade
             </button>
 
+
         </div>
+
+
 
 
         <!-- NAVEGAÇÃO ENTRE MESES -->
         <div class="navegacao-meses">
 
+
             <a href="/atividades/{{anoAnterior}}/{{mesAnterior}}">
-                ←
+                <span aria-hidden="true">←</span>
+                <span class="sr-only">Mês anterior</span>
             </a>
+
 
             <h2>
                 {{mesAtual}} {{anoAtual}}
             </h2>
 
+
             <a href="/atividades/{{proximoAno}}/{{proximoMes}}">
-                →
+                <span aria-hidden="true">→</span>
+                <span class="sr-only">Próximo mês</span>
             </a>
 
+
         </div>
+
+
 
 
         <!-- CALENDÁRIO -->
         <table class="calendario">
 
+
             <thead>
+
 
                 <tr>
                     <th>Domingo</th>
@@ -64,39 +86,54 @@
                     <th>Sábado</th>
                 </tr>
 
+
             </thead>
+
 
             <tbody>
 
+
                 {{#each calendario}}
+
 
                     <tr>
 
+
                         {{#each this}}
+
 
                             {{#if this}}
 
+
                                 <td>
+
 
                                     <span class="dia">
                                         {{numero}}
                                     </span>
 
+
                                     {{#each atividades}}
 
+
                                         <div class="evento">
+
 
                                             <strong>
                                                 {{titulo}}
                                             </strong>
 
+
                                             <br>
+
 
                                             <small>
                                                 🕒 {{horario}}
                                             </small>
 
+
                                             <div class="acoes">
+
 
                                                 <a
                                                     href="/atividades/editar/{{id}}"
@@ -105,10 +142,12 @@
                                                     ✏️
                                                 </a>
 
+
                                                 <form
                                                     action="/atividades/deletar/{{id}}"
                                                     method="POST"
                                                 >
+
 
                                                     <button
                                                         type="submit"
@@ -117,100 +156,144 @@
                                                         🗑️
                                                     </button>
 
+
                                                 </form>
+
 
                                             </div>
 
+
                                         </div>
+
 
                                     {{/each}}
 
+
                                 </td>
+
 
                             {{else}}
 
+
                                 <td class="vazio"></td>
+
 
                             {{/if}}
 
+
                         {{/each}}
+
 
                     </tr>
 
+
                 {{/each}}
+
 
             </tbody>
 
+
         </table>
+
+
 
 
         <!-- LEGENDA -->
         <div class="legenda">
 
+
             <span class="mat">
                 Matemática
             </span>
+
 
             <span class="geo">
                 Geografia
             </span>
 
+
             <span class="ing">
                 Inglês
             </span>
+
 
             <span class="hist">
                 História
             </span>
 
+
         </div>
+
 
     </main>
 
+
 </div>
+
+
 
 
 <!-- MODAL DE NOVA ATIVIDADE -->
 <div id="modal" class="modal">
 
+
     <div class="modal-content">
+
 
         <button
             class="fechar"
+            aria-label="Fechar"
             onclick="document.getElementById('modal').style.display='none'"
         >
             ✖
         </button>
 
+
         <h2>Nova atividade</h2>
+
 
         <form
             action="/atividades/add"
             method="POST"
         >
 
+
+            <label for="titulo-evento" class="sr-only">Título</label>
             <input
                 type="text"
+                id="titulo-evento"
                 name="titulo"
                 placeholder="Título"
                 required
             >
 
+
+            <label for="descricao-evento" class="sr-only">Descrição da atividade</label>
             <textarea
+                id="descricao-evento"
                 name="descricao"
                 placeholder="Descrição da atividade"
             ></textarea>
 
+
+            <label for="data-evento" class="sr-only">Data da atividade</label>
             <input
                 type="date"
+                id="data-evento"
                 name="data"
+                autocomplete="off"
                 required
             >
 
+
+            <label for="horario-evento" class="sr-only">Horário da atividade</label>
             <input
                 type="time"
+                id="horario-evento"
                 name="horario"
+                autocomplete="off"
             >
+
 
             <button
                 class="salvar"
@@ -219,23 +302,33 @@
                 Salvar atividade
             </button>
 
+
         </form>
 
+
     </div>
+
 
 </div>
 
 
+
+
 <script>
+
 
 window.onclick = function(event) {
 
+
     const modal = document.getElementById("modal");
+
 
     if (event.target === modal) {
         modal.style.display = "none";
     }
 
+
 };
+
 
 </script>
